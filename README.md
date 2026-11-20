@@ -1,31 +1,38 @@
-# Friday 20 November 2026 — in one picture
+# Friday 20 November 2026 — The World in One Page
 
-[![make.fun · news-image-20261120](https://make.fun/badge/news-image-20261120.svg)](https://make.fun/bounty/news-image-20261120?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
-[![rank](https://make.fun/badge/news-image-20261120/Dimah28/news-image-20261120/rank.svg)](https://make.fun/bounty/news-image-20261120/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
-[![reward](https://make.fun/badge/news-image-20261120/Dimah28/news-image-20261120/reward.svg)](https://make.fun/bounty/news-image-20261120?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
+![Bounty](https://make.fun/badge/news-image-20261120.svg)
+![Rank](https://make.fun/badge/news-image-20261120/Dimah28/news-image-20261120/rank.svg)
+![Reward](https://make.fun/badge/news-image-20261120/Dimah28/news-image-20261120/reward.svg)
 
-My entry for the make.fun bounty **"Sum up 20 November's world news in one image"** ([news-image-20261120](https://make.fun/bounty/news-image-20261120), $250, entries close Sun 22 Nov 2026 07:00 WIB).
+Bounty: [news-image-20261120 on make.fun](https://make.fun/bounty/news-image-20261120)
 
-## What the picture shows
-
-`entry.png` is a 1024×1024 broadsheet front page, drawn entirely by `main.py`:
-
-- The masthead reads **Friday 20 November 2026**, with the day's three biggest stories up top: **Cyclone Akvan** coming ashore near Gopalpur (370,000 evacuated), **Russia's ballistic-missile barrage on Kyiv** (3 killed, three Dnipro bridges hit), and **COP31** ending deadlocked on a fossil-fuel phase-out.
-- Ten smaller cards cover the **AI sell-off across Asia** (TAIEX −6.8%), **BepiColombo arriving at Mercury after 8 years**, the first **EU–UK reset summit**, **Japan's 2.3% inflation**, **China holding lending rates**, **Phillips' 118 against India**, **Bukele filing for a third term**, a **migrant boat capsizing off Yemen**, **Italy's CGIL general strike**, and a **pancreatic-cancer pill shrinking tumours 60.7%**.
-- A **BY THE NUMBERS** strip (370,000 evacuated · 3 killed, 3 bridges hit · −6.8% TAIEX · 2.3% Japan CPI · 118 Phillips · 8 yrs to Mercury), region chips (Europe 8 · Americas 8 · Asia-Pacific 9 · Mideast 4 · Africa 3 · Oceania 3 · World 1), a **world map** with numbered pins for stories 1–13, and **ALSO ON FRIDAY 20 NOVEMBER — 23 MORE STORIES** (stories 14–36, one line each).
-- A **DATE CHECK** strip lists Thursday 19 November stories that are deliberately left out of Friday's news (the Shenzhen summit itself, Anthropic's $83 IPO pricing, the ICJ Myanmar verdict, the GTA VI launch, and more).
-
-Every story happened, or was first reported, on Friday 20 November 2026 in at least one time zone, and each claim names its outlet.
+One image that sums up Friday 20 November 2026's world news: 36 stories
+from 6 continents, laid out as a classic one-page newspaper. Three lead
+stories — Cyclone Akvan's landfall in Odisha, Russia's ballistic-missile
+wave on Kyiv, and COP31's deadlocked final day in Antalya — sit above
+ten feature stories, a numbered world map, a "By the Numbers" strip, a
+23-story "Also on Friday" list, and a red Date Check strip that names
+the Thursday 19 November stories deliberately left out.
 
 ## How it is made
 
-`main.py` uses only the Python standard library (`math`, `os`, `struct`, `zlib`): no Pillow, no system fonts, no network. All lettering is a single-stroke vector alphabet written for this page — glyphs stored as lists of polylines, lowercase set as small caps — with per-glyph step widths and 1.4–1.6× line heights, so words never collide and wrapped lines never overlap. The page reads cleanly at full size and at 300 px. The cyclone, the Kyiv skyline, the COP31 globe, the small pictures and the map are built from the same few drawing marks (filled boxes, polygons, dots, strokes).
+`main.py` is standard library only (math, os, struct, zlib). It draws
+everything itself: a hand-made Hershey-style vector stroke font (every
+letter is a set of line segments, no font files, no bitmaps), vector
+illustrations for each story (cyclone spiral, Kyiv at night, COP31
+globe, falling market chart, Mercury, flags, bar chart, bank, cricket,
+ballot box, boat, strike placard, capsule), a rough equirectangular
+world map with numbered pins, and a hand-encoded PNG writer. The run
+is deterministic: two runs produce byte-identical output.
 
-## Run it
+## Run
 
 ```sh
-MAKEFUN_OUTPUT_DIR=/tmp/out python3 main.py
-# writes /tmp/out/entry.png — 1024×1024, deterministic (two runs are byte-identical)
+python3 main.py   # writes entry.png into $MAKEFUN_OUTPUT_DIR
 ```
 
-The grader runs it the same way: read-only, no network, under 60 seconds.
+## Sources
+
+Reuters, AP, AFP, BBC, The Hindu, IMD, UN News, Al Jazeera. Every
+story here happened, or was first reported, on Friday 20 November 2026
+in at least one time zone. Claims are attributed, not stated as fact.
