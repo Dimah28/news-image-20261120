@@ -22,7 +22,7 @@ Every story here happened, or was first reported, on Friday 20 November 2026 in 
 
 ## How it is drawn
 
-`main.py` is standard library only (`math`, `os`, `struct`, `zlib`) — no Pillow, no system fonts, no network. All lettering uses a hand-built vector stroke font (polylines on a grid, with true lowercase glyphs), so text stays crisp at any size and never looks pixelated. The cyclone spiral, the Kyiv skyline, the COP31 globe, the mini illustrations and the world map are all drawn with the same small canvas primitives (rectangles, polygons, circles, thick lines).
+`main.py` is standard library only (`math`, `os`, `struct`, `zlib`) — no Pillow, no system fonts, no network. All lettering uses a Hershey-style single-stroke vector font (polylines on a grid; lowercase rendered as small caps at 0.72 scale), with advance widths computed per glyph so letters never collide, and line heights of 1.4–1.6× the type size so wrapped lines never overlap — the poster stays legible at full size and at 300 px. The cyclone spiral, the Kyiv skyline, the COP31 globe, the mini illustrations and the world map are all drawn with the same small canvas primitives (rectangles, polygons, circles, thick lines).
 
 ## Run it
 
